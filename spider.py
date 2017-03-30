@@ -22,9 +22,10 @@ def get_iplist(filename,page,sort):
         print 'Page',
         print r
         a=driver.get('http://www.kuaidaili.com/free/'+str(sort)+'/'+str(r))
-        time.sleep(1)
-        hm=driver.page_source
-        tr=re.findall('<tr>(.*?)</tr>',hm,re.S)
+        tr=[]
+        while tr==[]:
+            hm=driver.page_source
+            tr=re.findall('<tr>(.*?)</tr>',hm,re.S)
         for each in tr:
             try:
                 ip=re.findall('<td data\-title="IP">(.*?)</td>',each,re.S)[0]
